@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="icon" type="image/x-icon" href="images/favicon.ico"> -->
+        <link rel="icon" type="image/png" href="images/dashboard.png" sizes="336x336">
+        <link rel="stylesheet" href="css/index.css">
+
+        <title>Afstandsmåler - Arduino</title>
+    </head>
+
+    <body>
+        <!-- Top box -->
+        <div class="headerContainer">
+            <div class="boxTop">
+                <h1 class="header">Afstandsmåler - Dashboard</h1> <br>
+                <p class="underText"> Output fra Arduino</p>
+            </div>
+        </div>
+
+        <!-- Middle boxes -->
+        <div class="container">
+            <div class="boxLeft">
+                Arduino output
+            </div>
+            <div class="boxMid">
+                <!-- <h1 class="header" style="font-size: 30px;">Klokken</h1> -->
+                <p class="clock" id="clock"></p>
+                <p class="date" id="date"></p>
+            </div>
+            <div class="boxRight">
+                <li class="info">
+                    Info 1
+                </li>
+                <li class="info">
+                    Info 2
+                </li>
+                <li class="info">
+                    Info 3
+                </li>
+                <li class="info">
+                    Info 4
+                </li>
+                <li class="info">
+                    Info 5
+                </li>
+                <br>
+                <p class="ard-info">Dette Arduino program, måler distance fra forskellige objekter</p>
+            </div>
+        </div>
+
+        <div class="bottomContainer">
+            <div class="boxBottomLeft">
+                <p>Arduino graph</p>
+            </div>
+        </div>
+
+
+
+
+
+        <script src="js/script.js"></script>
+        <script src="js/date.js"></script>
+    </body>
+</html>
