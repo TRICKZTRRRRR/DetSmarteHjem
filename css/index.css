@@ -42,7 +42,13 @@ body {
     background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
     color: white; /* Hvid tekstfarve på .boxMid */
     font-size: 30px; /* Ændrer tekststørrelsen */
+    
+    /* Centrer alt indhold i midten af boksen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 /* Change a class in a class
 .boxMid .test {
