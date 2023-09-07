@@ -1,93 +1,129 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Styles -->
-        <link rel="icon" type="image/png" href="images/dashboard.png" sizes="336x336">
-        <link rel="stylesheet" href="css/index.css">
 
-        <!-- Website title -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles -->
+    <link rel="icon" type="image/png" href="images/dashboard.png" sizes="336x336">
+    <link rel="stylesheet" href="css/index.css">
 
-        <title>Afstandsmåler - Arduino</title>
-    </head>
+    <!-- Website title -->
 
-    <body background="images/background.jpg"> 
-        <!-- Top box -->
-        <div class="headerContainer">
-            <div class="boxTop">
-                <h1 class="header">Afstandsmåler - Dashboard</h1> <br>
-                <p class="underText"> Output fra Arduino</p>
+    <title>Afstandsmåler - Arduino</title>
+</head>
+
+<body background="images/background.jpg">
+    <!-- Top box -->
+    <div class="headerContainer">
+        <div class="boxTop">
+            <h1 class="header">Afstandsmåler - Dashboard</h1> <br>
+            <p class="underText"> Output fra Arduino</p>
+        </div>
+    </div>
+
+    <!-- Middle boxes -->
+    <div class="container">
+        <div class="boxLeft">
+
+        </div>
+        <div class="boxMid">
+            <!-- <h1 class="header" style="font-size: 30px;">Klokken</h1> -->
+            <p class="clock" id="clock"></p>
+            <p class="date" id="date"></p>
+        </div>
+        <div class="boxRight">
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Bottom Box -->
+    <!-- <div class="bottomContainer">
+        <div class="boxBottom">
+            <div class="weather">
+                <iframe id="weather" src="https://www.yr.no/en/content/2-2614764/meteogram.svg"></iframe>
             </div>
         </div>
+    </div> -->
 
-        <!-- Middle boxes -->
-        <div class="container">
-            <div class="boxLeft">
-                
-            </div>
-            <div class="boxMid">
-                <!-- <h1 class="header" style="font-size: 30px;">Klokken</h1> -->
-                <p class="clock" id="clock"></p>
-                <p class="date" id="date"></p>
-            </div>
-            <div class="boxRight">
-                <div class="weather">
-                    <h2 style="top: 485px; right: 570px;">Weather</h2>
-                    <iframe id="weather" src="https://www.yr.no/en/content/2-2614764/meteogram.svg"></iframe>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Scripts -->
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/date.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Arduino Data Output -->
+    <script>
+        // Function to fetch and display data
+        function fetchData() {
+            fetch('output.txt') // Opdater stien til at matche din filplacering
+                .then(response => response.text())
+                .then(data => {
+                    const lines = data.trim().split('\n');
+                    const values = lines.map(line => parseFloat(line));
 
-        <script src="js/script.js"></script>
-        <script src="js/date.js"></script>
-        <!-- Arduino Data Output -->
-        <script>
-            // Function to fetch and display data
-            function fetchData() {
-                fetch('output.txt') // Opdater stien til at matche din filplacering
-                    .then(response => response.text())
-                    .then(data => {
-                        const lines = data.trim().split('\n');
-                        const values = lines.map(line => parseFloat(line));
-        
-                        if (values.length > 0) {
-                            // Vælg de seneste 5 værdier ved at bruge slice
-                            const latestValues = values.slice(-5);
-        
-                            // Filtrer ugyldige værdier
-                            const validValues = latestValues.filter(value => !isNaN(value));
-        
-                            if (validValues.length > 0) {
-                                // Opret en linje for "Latest Data"
-                                let latestData = 'Latest Data:\n';
-        
-                                // Tilføj hver værdi på en ny linje
-                                latestData += validValues.map(value => value.toString()).join('\n');
-        
-                                // Opdater indholdet af boxLeft div
-                                document.querySelector('.boxLeft').innerText = latestData;
-                            } else {
-                                // Opdater indholdet af boxLeft div
-                                document.querySelector('.boxLeft').innerText = 'Ingen gyldige data';
-                            }
+                    if (values.length > 0) {
+                        // Vælg de seneste 5 værdier ved at bruge slice
+                        const latestValues = values.slice(-5);
+
+                        // Filtrer ugyldige værdier
+                        const validValues = latestValues.filter(value => !isNaN(value));
+
+                        if (validValues.length > 0) {
+                            // Opret en linje for "Latest Data"
+                            let latestData = 'Latest Data:\n';
+
+                            // Tilføj hver værdi på en ny linje
+                            latestData += validValues.map(value => value.toString()).join('\n');
+
+                            // Opdater indholdet af boxLeft div
+                            document.querySelector('.boxLeft').innerText = latestData;
                         } else {
                             // Opdater indholdet af boxLeft div
-                            document.querySelector('.boxLeft').innerText = 'Ingen data tilgængelig';
+                            document.querySelector('.boxLeft').innerText = 'Ingen gyldige data';
                         }
-                    })
-                    .catch(error => {
-                        console.error('Fejl ved hentning af data:', error);
-                    });
+                    } else {
+                        // Opdater indholdet af boxLeft div
+                        document.querySelector('.boxLeft').innerText = 'Ingen data tilgængelig';
+                    }
+                })
+                .catch(error => {
+                    console.error('Fejl ved hentning af data:', error);
+                });
+        }
+
+        // Kald fetchData ved siden af sidenavigation
+        document.addEventListener('DOMContentLoaded', fetchData);
+
+        // Opsæt en timer til at kalde fetchData hvert sekund (1000 millisekunder)
+        setInterval(fetchData, 1000);
+    </script>
+
+    <script>
+        // Parse data from your text file (replace with your data parsing logic)
+        const data = [12, 19, 3, 5, 2, 3];
+
+        // Create a bar chart
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['1', '2', '3', '4', '5', '6'],
+                datasets: [{
+                    label: 'Data',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-        
-            // Kald fetchData ved siden af sidenavigation
-            document.addEventListener('DOMContentLoaded', fetchData);
-        
-            // Opsæt en timer til at kalde fetchData hvert sekund (1000 millisekunder)
-            setInterval(fetchData, 1000);
-        </script>
-    </body>
+        });
+    </script>
+</body>
+
 </html>

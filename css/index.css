@@ -84,15 +84,20 @@ body {
     background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
     color: white; /* Hvid tekstfarve på .boxMid */
     font-size: 15px; /* Ændrer tekststørrelsen */
-    
+    position: relative; /* Gør .boxRight til en relativt positioneret container */
 }
 
-.boxRight .weather {
-    bottom: 80px;
-    right: -100px;
-    /* position: absolute; */
-    height: 390px;
-    width: 700px;
+#myChart {
+    color: white;
+}
+
+#weather {
+    position: absolute; /* Gør #weather til en absolut positioneret element inden i .boxRight */
+    top: 0; /* Placer #weather i toppen af .boxRight */
+    left: 0; /* Placer #weather i venstre side af .boxRight */
+    width: 90%; /* Gør bredden af #weather 100% af .boxRight */
+    height: 90%; /* Gør højden af #weather 100% af .boxRight */
+    margin: 25px;
 }
 
 .headerContainer {
@@ -126,6 +131,19 @@ body {
     justify-content: center; /* Centrerer boksene vandret */
     align-items: center; /* Centrerer boksene lodret */
     height: 50vh; /* Gør containerhøjden fuld skærmhøjde */
+}
+
+.boxBottom {
+    flex: 1; /* Equal distribution of space */
+    height: 160px; /* Juster højden efter behov */
+    margin: 10px; /* Tilføj margin for at separere boksene */
+    margin-bottom: auto;
+    border-radius: 10px; /* Runde hjørner på boksene */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Tilføj en let skygge til boksene */
+    text-align: center;
+    background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
+    color: white; /* Hvid tekstfarve på .boxMid */
+    font-size: 15px; /* Ændrer tekststørrelsen */
 }
 
 
