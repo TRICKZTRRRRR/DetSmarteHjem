@@ -41,7 +41,7 @@ body {
     text-align: center;
     background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
     color: white; /* Hvid tekstfarve på .boxMid */
-    font-size: 15px; /* Ændrer tekststørrelsen */
+    font-size: 30px; /* Ændrer tekststørrelsen */
 }
 
 /* Change a class in a class
