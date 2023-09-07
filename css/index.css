@@ -55,7 +55,7 @@ body {
     height: 400px; /* Juster højden efter behov */
     margin: 10px; /* Tilføj margin for at separere boksene */
     border-radius: 10px; /* Runde hjørner på boksene */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Tilføj en let skygge til boksene */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Tilføj en tykkere og mørkere skygge til boksene */
     background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
     color: white; /* Hvid tekstfarve på .boxMid */
 }
