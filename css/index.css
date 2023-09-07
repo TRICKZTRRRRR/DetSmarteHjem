@@ -84,6 +84,15 @@ body {
     background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
     color: white; /* Hvid tekstfarve på .boxMid */
     font-size: 15px; /* Ændrer tekststørrelsen */
+    
+}
+
+.boxRight .weather {
+    bottom: 80px;
+    right: -100px;
+    /* position: absolute; */
+    height: 390px;
+    width: 700px;
 }
 
 .headerContainer {
