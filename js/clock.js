@@ -13,3 +13,4 @@ setInterval(updateClock, 1000);
 
 // Opdater klokken ved siden af sidenavigation
 updateClock();
+

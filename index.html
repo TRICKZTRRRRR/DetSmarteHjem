@@ -13,7 +13,7 @@
     <title>Afstandsmåler - Arduino</title>
 </head>
 
-<body background="images/background.jpg">
+<body>
     <!-- Top box -->
     <div class="headerContainer">
         <div class="boxTop">
@@ -28,26 +28,21 @@
 
         </div>
         <div class="boxMid">
-            <!-- <h1 class="header" style="font-size: 30px;">Klokken</h1> -->
             <p class="clock" id="clock"></p>
             <p class="date" id="date"></p>
         </div>
         <div class="boxRight">
-            <canvas id="myChart" width="400" height="200"></canvas>
+            <div id="idcce51e044cb5a"
+                a='{"t":"v","v":"1.2","lang":"da","locs":[520],"ssot":"c","sics":"ds","cbkg":"rgb(158,158,158)","cfnt":"#FFFFFF","cprb":"rgb(97,97,97)","cprf":"#FFFFFF","slfs":"22","slbr":15,"slmw":400,"sfnt":"a"}'>
+                Weather Data Source: <a href="https://sharpweather.com/weather_copenhagen/30_days/">weather 30 days
+                    Copenhagen</a>
+            </div>
         </div>
     </div>
 
-    <!-- Bottom Box -->
-    <!-- <div class="bottomContainer">
-        <div class="boxBottom">
-            <div class="weather">
-                <iframe id="weather" src="https://www.yr.no/en/content/2-2614764/meteogram.svg"></iframe>
-            </div>
-        </div>
-    </div> -->
 
     <!-- Scripts -->
-    <script src="js/script.js"></script>
+    <script src="js/clock.js"></script>
     <script src="js/date.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Arduino Data Output -->
@@ -97,33 +92,7 @@
         setInterval(fetchData, 1000);
     </script>
 
-    <script>
-        // Parse data from your text file (replace with your data parsing logic)
-        const data = [12, 19, 3, 5, 2, 3];
-
-        // Create a bar chart
-        const ctx = document.getElementById('myChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['1', '2', '3', '4', '5', '6'],
-                datasets: [{
-                    label: 'Data',
-                    data: data,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
+    <script async src="https://static1.sharpweather.com/widgetjs/?id=idcce51e044cb5a"></script>
 </body>
 
 </html>

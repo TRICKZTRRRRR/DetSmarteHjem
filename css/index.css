@@ -37,11 +37,12 @@ body {
     height: 400px; /* Juster højden efter behov */
     margin: 10px; /* Tilføj margin for at separere boksene */
     border-radius: 10px; /* Runde hjørner på boksene */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Tilføj en let skygge til boksene */
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); /* Tilføj en let skygge til boksene */
     text-align: center;
-    background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
-    color: white; /* Hvid tekstfarve på .boxMid */
+    /*background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
+    color: black; /* Hvid tekstfarve på .boxMid */
     font-size: 30px; /* Ændrer tekststørrelsen */
+    border: 3px solid black;
     
     /* Centrer alt indhold i midten af boksen */
     display: flex;
@@ -49,21 +50,15 @@ body {
     align-items: center;
 }
 
-
-/* Change a class in a class
-.boxMid .test {
-    text-align: left;
-}
-*/
-
 .boxMid {
     flex: 1; /* Equal distribution of space */
     height: 400px; /* Juster højden efter behov */
     margin: 10px; /* Tilføj margin for at separere boksene */
     border-radius: 10px; /* Runde hjørner på boksene */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Tilføj en tykkere og mørkere skygge til boksene */
-    background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
-    color: white; /* Hvid tekstfarve på .boxMid */
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); /* Tilføj en tykkere og mørkere skygge til boksene */
+    /*background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
+    color: black; /* Hvid tekstfarve på .boxMid */
+    border: 3px solid black;
 }
 
 .boxMid p {
@@ -75,30 +70,38 @@ body {
 
 
 .boxRight {
-    flex: 1; /* Equal distribution of space */
-    height: 400px; /* Juster højden efter behov */
-    margin: 10px; /* Tilføj margin for at separere boksene */
-    border-radius: 10px; /* Runde hjørner på boksene */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Tilføj en let skygge til boksene */
+  
+    height: 390px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
-    background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
-    color: white; /* Hvid tekstfarve på .boxMid */
-    font-size: 15px; /* Ændrer tekststørrelsen */
-    position: relative; /* Gør .boxRight til en relativt positioneret container */
+    background-color: rgb(158, 158, 158);
+    color: #FFFFFF;
+    font-size: 15px;
+    position: relative;
+    width: 397px;
+    /* border: 3px solid black; */
+}
+
+/* Sørg for, at teksten inde i .boxRight er synlig ved at tilpasse baggrundsfarven */
+#idcce51e044cb5a {
+    background-color: rgba(0, 0, 0, 0); /* Gør baggrunden gennemsigtig for vejrkassen */
+    color: #FFFFFF; /* Tekstfarve er hvid, som vejrkassen */
+
+    bottom: 3px;
+    right: 0px;
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    border: 3px solid black;
 }
 
 #myChart {
     color: white;
+    margin-top: 60px;
 }
 
-#weather {
-    position: absolute; /* Gør #weather til en absolut positioneret element inden i .boxRight */
-    top: 0; /* Placer #weather i toppen af .boxRight */
-    left: 0; /* Placer #weather i venstre side af .boxRight */
-    width: 90%; /* Gør bredden af #weather 100% af .boxRight */
-    height: 90%; /* Gør højden af #weather 100% af .boxRight */
-    margin: 25px;
-}
 
 .headerContainer {
     display: flex;
@@ -114,37 +117,29 @@ body {
     margin: 10px; /* Tilføj margin for at separere boksene */
     margin-bottom: auto;
     border-radius: 10px; /* Runde hjørner på boksene */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Tilføj en let skygge til boksene */
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); /* Tilføj en let skygge til boksene */
     text-align: center;
-    background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
-    color: white; /* Hvid tekstfarve på .boxMid */
+    /*background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
+    color: black; /* Hvid tekstfarve på .boxMid */
     font-size: 15px; /* Ændrer tekststørrelsen */
+    border: 3px solid black;
 }
+
+#topclock {
+    position: absolute;
+    top: 50%; /* Centrer lodret i forhold til .boxTop */
+    right: 10px; /* Afstand fra højre kant af .boxTop */
+    transform: translateY(-50%); /* Juster vertikalt for at centrere elementet korrekt */
+}
+
+
+
 
 .boxTop .underText {
     font-size: 25px;
 }
 
-.bottomContainer {
-    display: flex;
-    flex-direction: row; /* Make boxes align horizontally */
-    justify-content: center; /* Centrerer boksene vandret */
-    align-items: center; /* Centrerer boksene lodret */
-    height: 50vh; /* Gør containerhøjden fuld skærmhøjde */
-}
 
-.boxBottom {
-    flex: 1; /* Equal distribution of space */
-    height: 160px; /* Juster højden efter behov */
-    margin: 10px; /* Tilføj margin for at separere boksene */
-    margin-bottom: auto;
-    border-radius: 10px; /* Runde hjørner på boksene */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Tilføj en let skygge til boksene */
-    text-align: center;
-    background-color: rgba(65, 105, 225, 0.5); /* Gør baggrunden mere gennemsigtig kun for .boxMid */
-    color: white; /* Hvid tekstfarve på .boxMid */
-    font-size: 15px; /* Ændrer tekststørrelsen */
-}
 
 
 /* Stil for dag, måned og år */
